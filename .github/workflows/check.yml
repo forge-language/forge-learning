@@ -1,0 +1,27 @@
+name: Verify beginner lessons
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  course:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: forge-language/forge
+          ref: 9b1d1a6c86a688ba56158bd5c014d836c151f289
+          path: compiler-source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build the pinned SDK
+        run: |
+          cmake -S compiler-source -B "$RUNNER_TEMP/forge-build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$RUNNER_TEMP/forge-sdk"
+          cmake --build "$RUNNER_TEMP/forge-build" -j2
+          cmake --install "$RUNNER_TEMP/forge-build"
+      - name: Compile and run lessons and challenges in both backends
+        env:
+          FORGE: ${{ runner.temp }}/forge-sdk/bin/forge
+        run: python3 -m unittest discover -s tests -v

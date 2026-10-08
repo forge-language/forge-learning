@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "lessons": [
+    {
+      "id": "hello",
+      "source": "native main {\n  println(\"Hello, learner!\");\n}\n",
+      "expected_output": "Hello, learner!\n"
+    },
+    {
+      "id": "variables",
+      "source": "native main {\n  let apples: int = 10;\n  apples = apples - 4;\n  println(apples);\n}\n",
+      "expected_output": "6\n"
+    },
+    {
+      "id": "conditions",
+      "source": "native main {\n  let score: int = 45;\n  if (score >= 60) {\n    println(\"pass\");\n  } else {\n    println(\"try again\");\n  }\n}\n",
+      "expected_output": "try again\n"
+    },
+    {
+      "id": "loops",
+      "source": "native main {\n  let number: int = 1;\n  let total: int = 0;\n  while (number <= 5) {\n    total = total + number;\n    number = number + 1;\n  }\n  println(total);\n}\n",
+      "expected_output": "15\n"
+    },
+    {
+      "id": "functions",
+      "source": "fn triple(value: int): int {\n  return value * 3;\n}\n\nnative main {\n  println(triple(4));\n  println(triple(7));\n}\n",
+      "expected_output": "12\n21\n"
+    },
+    {
+      "id": "strings",
+      "source": "import strings;\n\nnative main {\n  let name: string = \"Ada\";\n  println(str_concat(\"Hello, \", name));\n  println(str_len(name));\n}\n",
+      "expected_output": "Hello, Ada\n3\n"
+    },
+    {
+      "id": "int64",
+      "source": "native main {\n  let value: int = 9007199254740993;\n  println(value);\n  println(value + 2);\n}\n",
+      "expected_output": "9007199254740993\n9007199254740995\n"
+    },
+    {
+      "id": "mini-project",
+      "source": "fn ticket_total(price: int, count: int): int {\n  return price * count;\n}\n\nnative main {\n  let customer: int = 0;\n  let revenue: int = 0;\n  while (customer < 2) {\n    revenue = revenue + ticket_total(5, 2);\n    customer = customer + 1;\n  }\n  println(revenue);\n  if (revenue >= 25) {\n    println(\"target reached\");\n  } else {\n    println(\"keep going\");\n  }\n}\n",
+      "expected_output": "20\nkeep going\n"
+    }
+  ]
+}
