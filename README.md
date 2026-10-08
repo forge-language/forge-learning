@@ -4,7 +4,7 @@ An eight-lesson introduction to Forge, with browser-compatible examples and a
 terminal practice runner. English is the primary language; every lesson also
 contains Korean explanations and challenges.
 
-Start in the [browser playground](https://forge-lang.org/playground), or install
+Start in the [browser playground](https://forge-lang.org/learn), or install
 Forge and practice locally. The course progresses from a greeting to a small
 ticket-total program. Try predicting each result before running it, then complete
 the challenge without looking at `solutions.json`.
